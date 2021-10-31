@@ -1,0 +1,30 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  font-family:"Popppins", "Quicksand", "Roboto", "Open Sans", "Calibri", "Tahoma", "Segoe UI", sans-serif;
+
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

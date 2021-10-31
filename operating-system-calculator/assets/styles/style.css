@@ -1,0 +1,359 @@
+*,
+::after,
+::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Popppins", "Quicksand", "Roboto", "Open Sans", "Calibri", "Tahoma", "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+@-webkit-keyframes loadingIndicatorThumb {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 110%;
+  }
+}
+
+@keyframes loadingIndicatorThumb {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 110%;
+  }
+}
+
+@-webkit-keyframes taskbarProgramIn {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes taskbarProgramIn {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#preloader-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: none !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+#preloader-container #preloader-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#preloader-container #preloader-content #preloader-image {
+  width: 50%;
+  max-height: 300px;
+  min-width: 400px;
+  position: relative;
+}
+
+#preloader-container #preloader-content #preloader-loading-indicator-container {
+  width: 200px;
+  height: 25px;
+  border: 1px solid gray;
+  border-radius: 7px;
+  padding: 2px 2px;
+  overflow: hidden;
+}
+
+#preloader-container #preloader-content #preloader-loading-indicator-container #preloader-loader-thumb {
+  width: 20px;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0011ff), color-stop(#3b3bf8), to(blue));
+  background: linear-gradient(to bottom, #0011ff, #3b3bf8, blue);
+  opacity: 0.5;
+  border-radius: 5px;
+  position: relative;
+  left: -100%;
+  -webkit-animation: loadingIndicatorThumb 1.5s ease-in-out infinite;
+          animation: loadingIndicatorThumb 1.5s ease-in-out infinite;
+}
+
+#preloader-container #preloader-content #preloader-loading-indicator-container #preloader-loader-thumb::before, #preloader-container #preloader-content #preloader-loading-indicator-container #preloader-loader-thumb::after {
+  content: "";
+  width: 20px;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0011ff), color-stop(#3b3bf8), to(blue));
+  background: linear-gradient(to bottom, #0011ff, #3b3bf8, blue);
+  border-radius: 5px;
+  position: relative;
+  left: -100%;
+  position: absolute;
+}
+
+#preloader-container #preloader-content #preloader-loading-indicator-container #preloader-loader-thumb::before {
+  left: 21px;
+}
+
+#preloader-container #preloader-content #preloader-loading-indicator-container #preloader-loader-thumb::after {
+  left: 42px;
+}
+
+#window-layer .program-window {
+  width: auto;
+  height: auto;
+  background-color: #1e1e32;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: none;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#window-layer .program-window .toolbar {
+  width: 100%;
+  height: 30px;
+  background-color: #141422;
+  color: rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 5px;
+  font-size: 0.85em;
+}
+
+#window-layer .program-window .toolbar .toolbar-title {
+  width: calc(100% - 110px);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#window-layer .program-window .toolbar .toolbar-controls {
+  width: 100px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+#window-layer .program-window .toolbar .toolbar-controls .toolbar-control-item {
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+}
+
+#window-layer .program-window .toolbar .toolbar-controls .toolbar-control-item.small:hover {
+  color: #82f387;
+}
+
+#window-layer .program-window .toolbar .toolbar-controls .toolbar-control-item.expand:hover {
+  color: #fff36b;
+}
+
+#window-layer .program-window .toolbar .toolbar-controls .toolbar-control-item.close:hover {
+  color: #ff473b;
+}
+
+#window-layer .program-content {
+  width: 100%;
+  height: auto;
+  border: none;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  gap: 10px;
+  padding: 10px 10px;
+  position: relative;
+  overflow-y: auto;
+}
+
+#root .desktop-cell {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#root .desktop-cell.non-empty-cell {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#root .desktop-cell .cell-program {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 7px;
+}
+
+#root .desktop-cell .cell-program.active {
+  background-color: red;
+}
+
+#root .desktop-cell .cell-program .program-image {
+  width: 30%;
+  pointer-events: none;
+}
+
+#root .desktop-cell .cell-program .program-name {
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 2px black;
+}
+
+#taskbar {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#taskbar .taskbar-item {
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+#taskbar .taskbar-item img {
+  -webkit-animation: taskbarProgramIn .3s ease-out 1 forwards;
+          animation: taskbarProgramIn .3s ease-out 1 forwards;
+}
+/*# sourceMappingURL=style.css.map */

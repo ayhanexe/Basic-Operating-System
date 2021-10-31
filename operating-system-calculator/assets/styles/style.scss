@@ -1,0 +1,247 @@
+@import "abstracts/reboot";
+@import "abstracts/animations";
+
+#preloader-container {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: black;
+
+  display: none !important;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  #preloader-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(-50%, -50%);
+
+    #preloader-image {
+      width: 50%;
+      max-height: 300px;
+      min-width: 400px;
+
+      position: relative;
+    }
+
+    #preloader-loading-indicator-container {
+      width: 200px;
+      height: 25px;
+      border: 1px solid gray;
+      border-radius: 7px;
+      padding: 2px 2px;
+      overflow: hidden;
+
+      #preloader-loader-thumb {
+        width: 20px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgb(0, 17, 255),
+          rgb(59, 59, 248),
+          rgb(0, 0, 255)
+        );
+        opacity: 0.5;
+        border-radius: 5px;
+        position: relative;
+        left: -100%;
+        animation: loadingIndicatorThumb 1.5s ease-in-out infinite;
+
+        &::before,
+        &::after {
+          content: "";
+          width: 20px;
+          height: 100%;
+          background: linear-gradient(
+            to bottom,
+            rgb(0, 17, 255),
+            rgb(59, 59, 248),
+            rgb(0, 0, 255)
+          );
+          border-radius: 5px;
+          position: relative;
+          left: -100%;
+          position: absolute;
+        }
+
+        &::before {
+          left: 21px;
+        }
+
+        &::after {
+          left: 42px;
+        }
+      }
+    }
+  }
+}
+
+#window-layer {
+  .program-window {
+    width: auto;
+    height: auto;
+    background-color: #1e1e32;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    display: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    user-select: none;
+
+    .toolbar {
+      width: 100%;
+      height: 30px;
+      background-color: #141422;
+      color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+      font-size: 0.85em;
+
+      .toolbar-title {
+        width: calc(100% - 110px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .toolbar-controls {
+        width: 100px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: auto;
+
+        .toolbar-control-item {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: color 0.3s ease-out;
+
+          &.small:hover {
+            color: #82f387;
+          }
+          &.expand:hover {
+            color: #fff36b;
+          }
+          &.close:hover {
+            color: #ff473b;
+          }
+        }
+      }
+    }
+  }
+  .program-content {
+    width: 100%;
+    height: auto;
+    border: none;
+  }
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: start;
+
+  gap: 10px;
+  padding: 10px 10px;
+
+  position: relative;
+
+  // transform: scale(0.9);
+
+  overflow-y: auto;
+
+  .desktop-cell {
+    width: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    top: 0;
+    left: 0;
+
+    user-select: none;
+
+    &.non-empty-cell {
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    .cell-program {
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 7px;
+
+      &.active {
+        background-color: red;
+      }
+
+      .program-image {
+        width: 30%;
+        pointer-events: none;
+      }
+      .program-name {
+        color: white;
+        text-align: center;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 1);
+      }
+    }
+  }
+}
+
+#taskbar {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .taskbar-item {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    cursor:pointer;
+    background-color:rgba(255, 255, 255, 0.1);
+    border-radius:5px;
+
+    img {
+      animation: taskbarProgramIn .3s ease-out 1 forwards;
+    }
+  }
+}
